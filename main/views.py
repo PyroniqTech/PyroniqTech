@@ -20,6 +20,3 @@ def support(request):
 
 def payment(request):
     return render(request, 'payment.html')
-
-def contact(request):
-    return render(request, 'contact.html')
