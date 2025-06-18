@@ -2,6 +2,54 @@
 {% block title %}About Us - PyroniqTech{% endblock %}
 {% block content %}
 
+<style>
+/* Fade In */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.fade-in {
+  animation: fadeIn 1.5s ease-out forwards;
+  opacity: 0;
+}
+
+/* Fade In Up */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-in-up {
+  animation: fadeInUp 1.5s ease-out forwards;
+  opacity: 0;
+}
+
+/* Fade In Left */
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.fade-in-left {
+  animation: fadeInLeft 1.5s ease-out forwards;
+  opacity: 0;
+}
+
+/* Fade Delayed */
+.fade-delayed {
+  animation: fadeIn 2s ease-out 0.8s forwards;
+  opacity: 0;
+}
+
+/* Fade Zoom */
+@keyframes fadeZoom {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+.fade-zoom {
+  animation: fadeZoom 1.2s ease-out forwards;
+  opacity: 0;
+}
+</style>
+
 <div class="container py-5">
   <!-- Hero Section -->
   <div class="text-center mb-5">
