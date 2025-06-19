@@ -15,8 +15,5 @@ def trust(request):
 def career(request):
     return render(request, 'career.html')
 
-def support(request):
-    return render(request, 'support.html')
-
 def payment(request):
     return render(request, 'payment.html')
