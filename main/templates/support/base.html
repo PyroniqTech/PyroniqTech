@@ -7,11 +7,11 @@
     <title>{% block title %}Support - PyroniqTech{% endblock %}</title>  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
 
-    <!-- Your main stylesheet -->
+    <!-- Main CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
-    <!-- ✅ AOS Animation Stylesheet -->
-    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <!-- ✅ AOS Animation CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
 </head>  
 
 <body>  
@@ -37,10 +37,15 @@
         <p>© 2025 PyroniqTech. All rights reserved.</p>  
     </footer>
 
-    <!-- ✅ AOS Animation Script -->
+    <!-- ✅ AOS Animation JS -->
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
-      AOS.init({ once: true });
+      AOS.init({
+        once: true, // Animate only once when scrolling down
+        duration: 800, // Animation duration in ms
+        offset: 120,   // Trigger point offset
+        // easing: 'ease-in-out', // Optional: smooth in/out
+      });
     </script>
 </body>  
 </html>
