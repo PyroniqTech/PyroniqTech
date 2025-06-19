@@ -1,51 +1,49 @@
 {% load static %}
-
 <!DOCTYPE html>
-<html lang="en">  
-<head>  
-    <meta charset="UTF-8">  
-    <title>{% block title %}Support - PyroniqTech{% endblock %}</title>  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Support - PyroniqTech{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Main CSS -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
-    <!-- ✅ AOS Animation CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
-</head>  
+  <!-- ✅ AOS CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'automation_tools' %}">Automation Tools</a></li>
+        <li><a href="{% url 'about' %}">About</a></li>
+        <li><a href="{% url 'trust' %}">Trust</a></li>
+        <li><a href="{% url 'career' %}">Career</a></li>
+        <li><a href="{% url 'support_home' %}">Support</a></li>
+        <li><a href="{% url 'payment' %}">Payment</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<body>  
-    <header>  
-        <nav>  
-            <ul>  
-                <li><a href="{% url 'home' %}">Home</a></li>  
-                <li><a href="{% url 'automation_tools' %}">Automation Tools</a></li>  
-                <li><a href="{% url 'about' %}">About</a></li>  
-                <li><a href="{% url 'trust' %}">Trust</a></li>  
-                <li><a href="{% url 'career' %}">Career</a></li>  
-                <li><a href="{% url 'support_home' %}">Support</a></li>  
-                <li><a href="{% url 'payment' %}">Payment</a></li>  
-            </ul>  
-        </nav>  
-    </header>  
+  <main class="container my-5">
+    {% block content %}{% endblock %}
+  </main>
 
-    <main class="container my-5">
-        {% block content %}{% endblock %}
-    </main>
+  <footer>
+    <p>© 2025 PyroniqTech. All rights reserved.</p>
+  </footer>
 
-    <footer>  
-        <p>© 2025 PyroniqTech. All rights reserved.</p>  
-    </footer>
-
-    <!-- ✅ AOS Animation JS -->
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    <script>
-      AOS.init({
-        once: true, // Animate only once when scrolling down
-        duration: 800, // Animation duration in ms
-        offset: 120,   // Trigger point offset
-        // easing: 'ease-in-out', // Optional: smooth in/out
-      });
-    </script>
-</body>  
+  <!-- ✅ AOS Script -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 700,
+      offset: 100,
+      once: false, // 🚨 allow re-animation when scrolling back up
+      mirror: true // 🚨 trigger animations on scroll up too
+    });
+  </script>
+</body>
 </html>
