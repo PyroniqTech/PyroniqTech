@@ -3,5 +3,20 @@
 <section class="container py-5 text-center">
   <h1 class="fw-bold display-4">Support Center</h1>
   <p class="lead text-muted">Explore help categories or contact support.</p>
+
+  <div class="row mt-5 justify-content-center">
+    <div class="col-md-6 text-start">
+      <ul class="list-group">
+        <li class="list-group-item"><a href="{% url 'general' %}">📄 General Inquiries</a></li>
+        <li class="list-group-item"><a href="{% url 'ai_bot_help' %}">🤖 AI Bot Help</a></li>
+        <li class="list-group-item"><a href="{% url 'automation_help' %}">⚙️ Automation Help</a></li>
+        <li class="list-group-item"><a href="{% url 'technical' %}">🛠 Technical Support</a></li>
+        <li class="list-group-item"><a href="{% url 'project_status' %}">📊 Project Status</a></li>
+        <li class="list-group-item"><a href="{% url 'payment_issues' %}">💳 Payment Issues</a></li>
+        <li class="list-group-item"><a href="{% url 'bot_installation' %}">📦 Bot Installation</a></li>
+        <li class="list-group-item"><a href="{% url 'live_chat' %}">💬 Live Chat</a></li>
+      </ul>
+    </div>
+  </div>
 </section>
 {% endblock %}
