@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<!-- Support Page Start -->
 <section class="container py-5">
   <div class="text-center mb-5">
     <h1 class="fw-bold display-4"><i class="bi bi-life-preserver"></i> Support & Help Center</h1>
     <p class="text-muted lead">Find instant answers, get help from our AI assistant, or contact live support when needed.</p>
+    <div id="support-status" class="badge bg-success mt-2">Live Support: Online</div>
   </div>
 
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
@@ -121,6 +123,10 @@
       <label class="form-label">Describe Your Issue</label>
       <textarea name="message" rows="5" class="form-control" required></textarea>
     </div>
+    <div class="col-12">
+      <label class="form-label">reCAPTCHA</label>
+      <div class="g-recaptcha" data-sitekey="your_site_key_here"></div>
+    </div>
     <div class="col-12 text-center">
       <button type="submit" class="btn btn-primary"><i class="bi bi-send"></i> Submit Ticket</button>
     </div>
@@ -189,5 +195,32 @@
     </div>
   </div>
 </section>
+
+<!-- AI + Live Chat Embed -->
+<script>
+  const supportHours = { start: 12, end: 20 };
+  const now = new Date();
+  const currentHour = now.getHours();
+  const supportStatus = document.getElementById("support-status");
+  if (currentHour >= supportHours.start && currentHour < supportHours.end) {
+    supportStatus.textContent = "Live Support: Online";
+    supportStatus.classList.remove("bg-danger");
+    supportStatus.classList.add("bg-success");
+  } else {
+    supportStatus.textContent = "Live Support: Offline";
+    supportStatus.classList.remove("bg-success");
+    supportStatus.classList.add("bg-danger");
+  }
+</script>
+
+<!-- Replace with your actual bot/chat embed -->
+<script>
+  (function() {
+    var bot = document.createElement("script");
+    bot.src = "https://yourbotplatform.com/embed.js";
+    bot.async = true;
+    document.body.appendChild(bot);
+  })();
+</script>
 
 {% endblock %}
