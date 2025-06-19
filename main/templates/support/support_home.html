@@ -2,8 +2,8 @@
 
 {% block content %}
 <section class="text-center">
-  <h1 class="fw-bold display-4">Support Center</h1>
-  <p class="lead text-muted">Explore help categories or contact support.</p>
+  <h1 class="fw-bold display-4">Support Center</h1> <!-- (1) Main Heading -->
+  <p class="lead text-muted">Explore help categories or contact support.</p> <!-- (2) Subheading -->
 
   <div class="row mt-5 justify-content-center">
     <div class="col-md-6 text-start">
@@ -17,6 +17,35 @@
         <li class="list-group-item"><a href="{% url 'bot_installation' %}">📦 Bot Installation</a></li>
         <li class="list-group-item"><a href="{% url 'live_chat' %}">💬 Live Chat</a></li>
       </ul>
+    </div>
+  </div>
+</section>
+
+<!-- (4) Contact Form Section -->
+<section class="mt-5 mb-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <h2 class="text-center mb-4">Contact Support</h2>
+        <form method="post" action="/contact/submit/">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label for="name" class="form-label">Your Name</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Your Email</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Your Message</label>
+            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+          </div>
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </section>
