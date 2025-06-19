@@ -2,8 +2,61 @@
 
 {% block content %}
 <section class="text-center">
-  <h1 class="fw-bold display-4">Support Center</h1> <!-- (1) Main Heading -->
-  <p class="lead text-muted">Explore help categories or contact support.</p> <!-- (2) Subheading -->
+  <h1 class="fw-bold display-4">Support Center</h1>
+  <p class="lead text-muted">Explore help categories or contact support.</p>
+
+  <!-- (13) Get Support CTA Button -->
+  <div class="my-4">
+    <a href="#contact-form" class="btn btn-outline-primary btn-lg">Get Support</a>
+  </div>
+
+  <!-- (9) Quick Visual Category Links -->
+  <div class="row justify-content-center mb-5">
+    <div class="col-md-10">
+      <div class="row g-4">
+        <div class="col-md-3">
+          <a href="{% url 'technical' %}" class="text-decoration-none text-dark">
+            <div class="card text-center shadow-sm h-100">
+              <div class="card-body">
+                <div class="fs-1">🛠</div>
+                <h5 class="card-title mt-2">Technical</h5>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-3">
+          <a href="{% url 'payment_issues' %}" class="text-decoration-none text-dark">
+            <div class="card text-center shadow-sm h-100">
+              <div class="card-body">
+                <div class="fs-1">💳</div>
+                <h5 class="card-title mt-2">Billing</h5>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-3">
+          <a href="{% url 'general' %}" class="text-decoration-none text-dark">
+            <div class="card text-center shadow-sm h-100">
+              <div class="card-body">
+                <div class="fs-1">📄</div>
+                <h5 class="card-title mt-2">General</h5>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-3">
+          <a href="{% url 'live_chat' %}" class="text-decoration-none text-dark">
+            <div class="card text-center shadow-sm h-100">
+              <div class="card-body">
+                <div class="fs-1">💬</div>
+                <h5 class="card-title mt-2">Live Chat</h5>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="row mt-5 justify-content-center">
     <div class="col-md-6 text-start">
@@ -21,8 +74,28 @@
   </div>
 </section>
 
-<!-- (4) Contact Form Section -->
+<!-- (12) Ticket ID Status Check Section -->
 <section class="mt-5 mb-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <h3 class="text-center mb-3">Check Your Ticket Status</h3>
+        <form method="get" action="/support/ticket-status/">
+          <div class="mb-3">
+            <label for="ticket_id" class="form-label">Enter Your Ticket ID</label>
+            <input type="text" class="form-control" id="ticket_id" name="ticket_id" required>
+          </div>
+          <div class="d-grid">
+            <button type="submit" class="btn btn-secondary">Check Status</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- (4) Contact Form Section -->
+<section class="mb-5" id="contact-form">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-8">
