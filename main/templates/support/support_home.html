@@ -2,168 +2,148 @@
 
 {% block content %}
 <section class="text-center">
-  <h1 class="fw-bold display-4">Support Center</h1>
-  <p class="lead text-muted">Explore help categories or contact support.</p>
+  <h1 class="fw-bold display-4" data-aos="fade-down">Support Center</h1>
+  <p class="lead text-muted" data-aos="fade-up" data-aos-delay="100">Explore help categories or contact our support team.</p>
 
-  <!-- (13) Get Support CTA Button -->
-  <div class="my-4">
-    <a href="#contact-form" class="btn btn-outline-primary btn-lg">Get Support</a>
+  <!-- CTA Button -->
+  <div class="my-4" data-aos="zoom-in" data-aos-delay="200">
+    <a href="#contact-form" class="btn btn-primary btn-lg animated-cta">Get Support</a>
   </div>
 
-  <!-- (9) Quick Visual Category Links -->
-  <div class="row justify-content-center mb-5">
-    <div class="col-md-10">
-      <div class="row g-4">
-        <div class="col-md-3">
-          <a href="{% url 'technical' %}" class="text-decoration-none text-dark">
-            <div class="card text-center shadow-sm h-100">
-              <div class="card-body">
-                <div class="fs-1">🛠</div>
-                <h5 class="card-title mt-2">Technical</h5>
-              </div>
+  <!-- 8 Animated Cards -->
+  <div class="container my-5">
+    <div class="row g-4 justify-content-center">
+      {% comment %} Each card has a fade-up animation with slight delay {% endcomment %}
+      <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+        <a href="{% url 'general' %}" class="text-decoration-none text-dark">
+          <div class="card support-card">
+            <div class="card-body">
+              <div class="fs-1">📄</div>
+              <h5 class="mt-2 fw-semibold">General Inquiries</h5>
             </div>
-          </a>
-        </div>
-        <div class="col-md-3">
-          <a href="{% url 'payment_issues' %}" class="text-decoration-none text-dark">
-            <div class="card text-center shadow-sm h-100">
-              <div class="card-body">
-                <div class="fs-1">💳</div>
-                <h5 class="card-title mt-2">Billing</h5>
-              </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-3" data-aos="fade-up" data-aos-delay="150">
+        <a href="{% url 'ai_bot_help' %}" class="text-decoration-none text-dark">
+          <div class="card support-card">
+            <div class="card-body">
+              <div class="fs-1">🤖</div>
+              <h5 class="mt-2 fw-semibold">AI Bot Help</h5>
             </div>
-          </a>
-        </div>
-        <div class="col-md-3">
-          <a href="{% url 'general' %}" class="text-decoration-none text-dark">
-            <div class="card text-center shadow-sm h-100">
-              <div class="card-body">
-                <div class="fs-1">📄</div>
-                <h5 class="card-title mt-2">General</h5>
-              </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+        <a href="{% url 'automation_help' %}" class="text-decoration-none text-dark">
+          <div class="card support-card">
+            <div class="card-body">
+              <div class="fs-1">⚙️</div>
+              <h5 class="mt-2 fw-semibold">Automation Help</h5>
             </div>
-          </a>
-        </div>
-        <div class="col-md-3">
-          <a href="{% url 'live_chat' %}" class="text-decoration-none text-dark">
-            <div class="card text-center shadow-sm h-100">
-              <div class="card-body">
-                <div class="fs-1">💬</div>
-                <h5 class="card-title mt-2">Live Chat</h5>
-              </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-3" data-aos="fade-up" data-aos-delay="250">
+        <a href="{% url 'technical' %}" class="text-decoration-none text-dark">
+          <div class="card support-card">
+            <div class="card-body">
+              <div class="fs-1">🛠</div>
+              <h5 class="mt-2 fw-semibold">Technical Support</h5>
             </div>
-          </a>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+        <a href="{% url 'project_status' %}" class="text-decoration-none text-dark">
+          <div class="card support-card">
+            <div class="card-body">
+              <div class="fs-1">📊</div>
+              <h5 class="mt-2 fw-semibold">Project Status</h5>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-3" data-aos="fade-up" data-aos-delay="350">
+        <a href="{% url 'payment_issues' %}" class="text-decoration-none text-dark">
+          <div class="card support-card">
+            <div class="card-body">
+              <div class="fs-1">💳</div>
+              <h5 class="mt-2 fw-semibold">Billing Issues</h5>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
+        <a href="{% url 'bot_installation' %}" class="text-decoration-none text-dark">
+          <div class="card support-card">
+            <div class="card-body">
+              <div class="fs-1">📦</div>
+              <h5 class="mt-2 fw-semibold">Bot Installation</h5>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-3" data-aos="fade-up" data-aos-delay="450">
+        <a href="{% url 'live_chat' %}" class="text-decoration-none text-dark">
+          <div class="card support-card">
+            <div class="card-body">
+              <div class="fs-1">💬</div>
+              <h5 class="mt-2 fw-semibold">Live Chat</h5>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ticket Checker -->
+  <section class="my-5" data-aos="fade-right">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <h3 class="text-center mb-4">Check Your Ticket Status</h3>
+          <form method="get" action="/support/ticket-status/">
+            <div class="mb-3">
+              <label for="ticket_id" class="form-label">Enter Your Ticket ID</label>
+              <input type="text" class="form-control" id="ticket_id" name="ticket_id" required>
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-outline-secondary">Check Status</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="row mt-5 justify-content-center">
-    <div class="col-md-6 text-start">
-      <ul class="list-group">
-        <li class="list-group-item"><a href="{% url 'general' %}">📄 General Inquiries</a></li>
-        <li class="list-group-item"><a href="{% url 'ai_bot_help' %}">🤖 AI Bot Help</a></li>
-        <li class="list-group-item"><a href="{% url 'automation_help' %}">⚙️ Automation Help</a></li>
-        <li class="list-group-item"><a href="{% url 'technical' %}">🛠 Technical Support</a></li>
-        <li class="list-group-item"><a href="{% url 'project_status' %}">📊 Project Status</a></li>
-        <li class="list-group-item"><a href="{% url 'payment_issues' %}">💳 Payment Issues</a></li>
-        <li class="list-group-item"><a href="{% url 'bot_installation' %}">📦 Bot Installation</a></li>
-        <li class="list-group-item"><a href="{% url 'live_chat' %}">💬 Live Chat</a></li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- (12) Ticket ID Status Check Section -->
-<section class="mt-5 mb-5">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-8">
-        <h3 class="text-center mb-3">Check Your Ticket Status</h3>
-        <form method="get" action="/support/ticket-status/">
-          <div class="mb-3">
-            <label for="ticket_id" class="form-label">Enter Your Ticket ID</label>
-            <input type="text" class="form-control" id="ticket_id" name="ticket_id" required>
-          </div>
-          <div class="d-grid">
-            <button type="submit" class="btn btn-secondary">Check Status</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- (8) FAQ Section -->
-<section class="mt-5 mb-5">
-  <div class="container">
-    <h2 class="text-center mb-4">Frequently Asked Questions</h2>
-    <div class="accordion" id="faqAccordion">
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="faq1">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faqOne" aria-expanded="true">
-            How long does it take to get support?
-          </button>
-        </h2>
-        <div id="faqOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
-          <div class="accordion-body">
-            We usually respond within 24 hours during business days.
-          </div>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="faq2">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqTwo">
-            Can I contact you via WhatsApp or Telegram?
-          </button>
-        </h2>
-        <div id="faqTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-          <div class="accordion-body">
-            Currently, only email and live chat are supported.
-          </div>
+  <!-- Contact Form -->
+  <section class="mb-5" id="contact-form" data-aos="fade-up">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <h2 class="text-center mb-4">Contact Support</h2>
+          <form method="post" action="/contact/submit/">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="name" class="form-label">Your Name</label>
+              <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Your Email</label>
+              <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+              <label for="message" class="form-label">Your Message</label>
+              <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </section>
-
-<!-- (4) Contact Form Section -->
-<section class="mb-5" id="contact-form">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-8">
-        <h2 class="text-center mb-4">Contact Support</h2>
-        <form method="post" action="/contact/submit/">
-          {% csrf_token %}
-          <div class="mb-3">
-            <label for="name" class="form-label">Your Name</label>
-            <input type="text" class="form-control" id="name" name="name" required>
-          </div>
-          <div class="mb-3">
-            <label for="email" class="form-label">Your Email</label>
-            <input type="email" class="form-control" id="email" name="email" required>
-          </div>
-          <div class="mb-3">
-            <label for="message" class="form-label">Your Message</label>
-            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
-          </div>
-          <div class="d-grid">
-            <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- (6) Live Chat Script Placeholder -->
-<script src="//code.tidio.co/your-public-key.js" async></script>
-
-<!-- (10/11) SEO Meta Tags Placeholder: Add to support/base.html -->
-<!--
-  <title>Support Center | PyroniqTech</title>
-  <meta name="description" content="Get help, submit queries, and resolve issues with our dedicated support center.">
-  <meta property="og:title" content="Support Center | PyroniqTech">
-  <meta property="og:description" content="Help categories, ticket system, live chat and more.">
--->
 {% endblock %}
