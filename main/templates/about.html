@@ -29,115 +29,75 @@
 </script>
 {% endblock %}
 
-<style>
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-.fade-in {
-  animation: fadeIn 1.5s ease-out forwards;
-  opacity: 0;
-}
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.fade-in-up {
-  animation: fadeInUp 1.5s ease-out forwards;
-  opacity: 0;
-}
-@keyframes fadeInLeft {
-  from { opacity: 0; transform: translateX(-30px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-.fade-in-left {
-  animation: fadeInLeft 1.5s ease-out forwards;
-  opacity: 0;
-}
-.fade-delayed {
-  animation: fadeIn 2s ease-out 0.8s forwards;
-  opacity: 0;
-}
-@keyframes fadeZoom {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
-}
-.fade-zoom {
-  animation: fadeZoom 1.2s ease-out forwards;
-  opacity: 0;
-}
-</style>
-
 <div class="container py-5">
 
-  <div class="text-center mb-5">
-    <h1 class="display-4 fw-bold fade-in-up">About PyroniqTech</h1>
-    <p class="lead text-muted fade-delayed">We craft intelligent, scalable, and automated digital solutions that move businesses forward.</p>
+  <div class="text-center mb-5" data-aos="fade-up">
+    <h1 class="display-4 fw-bold">About PyroniqTech</h1>
+    <p class="lead text-muted">We craft intelligent, scalable, and automated digital solutions that move businesses forward.</p>
   </div>
 
-  <hr class="my-5">
+  <hr class="my-5" data-aos="fade-in">
 
-  <div class="mb-5">
-    <h3 class="fw-bold fade-in-left">👨‍💻 Who We Are</h3>
-    <p class="fade-in text-muted">At PyroniqTech, we are a team of passionate developers and automation experts dedicated to building intelligent, scalable, and results-driven digital solutions. Our mission is simple — to empower businesses and individuals through powerful technology that saves time, boosts efficiency, and drives growth.
-
-With a deep understanding of modern frameworks and a client-first mindset, we don’t just build tools — we craft experiences that solve real-world problems. From automation systems and AI integrations to full-stack web development, every project we deliver is backed by precision, transparency, and a commitment to excellence.</p>
+  <div class="mb-5" data-aos="fade-left">
+    <h3 class="fw-bold">👨‍💻 Who We Are</h3>
+    <p class="text-muted">At PyroniqTech, we are a team of passionate developers and automation experts...</p>
   </div>
 
-  <hr class="my-5">
+  <hr class="my-5" data-aos="fade-in">
 
   <div class="row mb-5">
-    <div class="col-md-6">
-      <h3 class="fw-bold fade-in-left">🚀 Our Mission</h3>
-      <p class="fade-in text-muted">is to simplify complex challenges through smart automation and modern digital solutions. We aim to deliver powerful tools that not only meet our clients’ goals but exceed their expectations — with speed, clarity, and innovation at the core of everything we build.</p>
+    <div class="col-md-6" data-aos="fade-right">
+      <h3 class="fw-bold">🚀 Our Mission</h3>
+      <p class="text-muted">is to simplify complex challenges through smart automation and modern digital solutions...</p>
     </div>
-    <div class="col-md-6">
-      <h3 class="fw-bold fade-in-left">🎯 Our Vision</h3>
-      <p class="fade-in text-muted">is to become a global leader in automation and intelligent tech solutions, empowering businesses of all sizes to unlock their true potential. We envision a future where technology serves people — efficiently, ethically, and effortlessly.</p>
+    <div class="col-md-6" data-aos="fade-left">
+      <h3 class="fw-bold">🎯 Our Vision</h3>
+      <p class="text-muted">is to become a global leader in automation and intelligent tech solutions...</p>
     </div>
   </div>
 
-  <hr class="my-5">
+  <hr class="my-5" data-aos="fade-in">
 
-  <div class="mb-5">
-    <h3 class="fw-bold fade-in-left">🛠️ What We Do</h3>
-    <ul class="list-group list-group-flush fade-in text-muted small">
-      <li class="list-group-item border-0">✅ We transform ideas into intelligent, scalable, and future-ready digital solutions.</li>
-      <li class="list-group-item border-0">✅ Advanced AI & Machine Learning models tailored to real-world applications.</li>
-      <li class="list-group-item border-0">✅ Python-powered automation systems that maximize efficiency and save time.</li>
-      <li class="list-group-item border-0">✅ Responsive frontends with HTML, CSS, and modern frameworks — built with precision.</li>
-      <li class="list-group-item border-0">✅ From secure backends to seamless user experiences — complete full-stack ecosystems.</li>
-      <li class="list-group-item border-0">✅ Clean, optimized code with enterprise-grade scalability and long-term performance.</li>
-      <li class="list-group-item border-0">✅ We don’t just develop — we architect digital experiences that perform at the highest level.</li>
+  <div class="mb-5" data-aos="fade-up">
+    <h3 class="fw-bold">🛠️ What We Do</h3>
+    <ul class="list-group list-group-flush text-muted small">
+      <li class="list-group-item border-0">✅ We transform ideas into intelligent solutions.</li>
+      <li class="list-group-item border-0">✅ Advanced AI & Machine Learning models...</li>
+      <li class="list-group-item border-0">✅ Python-powered automation systems...</li>
+      <li class="list-group-item border-0">✅ Responsive frontends with modern frameworks...</li>
+      <li class="list-group-item border-0">✅ Full-stack web ecosystems...</li>
+      <li class="list-group-item border-0">✅ Clean, optimized, scalable code...</li>
+      <li class="list-group-item border-0">✅ We architect digital experiences that perform...</li>
     </ul>
   </div>
 
-  <hr class="my-5">
+  <hr class="my-5" data-aos="fade-in">
 
-  <div class="mb-5">
-    <h3 class="fw-bold fade-in-left">🏆 Why Clients Choose Us</h3>
-    <ul class="list-unstyled fade-in text-muted small">
-      <li>We’re not just developers — we’re your growth partners. Clients trust PyroniqTech because we deliver more than just code:</li>
-      <li>✔ Precision & Professionalism – Every solution is tailored with clarity, care, and cutting-edge tech.</li>
-      <li>✔ Clear communication and client-first approach</li>
-      <li>✔ Scalable, secure, and future-proof solutions</li>
-      <li>✔ End-to-End Expertise – From backend logic to frontend finesse, we handle everything in-house.</li>
-      <li>✔ Speed Without Compromise – Fast turnaround times with zero compromise on quality or stability.</li>
-      <li>✔ Results-Driven Approach – Every tool, website, or system we build is focused on real outcomes: growth, efficiency, and impact.</li>
-      <li>✔ After-Launch Support – We’re with you beyond delivery, ensuring smooth scaling and evolution.</li>
+  <div class="mb-5" data-aos="fade-up">
+    <h3 class="fw-bold">🏆 Why Clients Choose Us</h3>
+    <ul class="list-unstyled text-muted small">
+      <li>✔ Precision & Professionalism</li>
+      <li>✔ Clear communication</li>
+      <li>✔ Scalable, secure solutions</li>
+      <li>✔ End-to-End Expertise</li>
+      <li>✔ Speed Without Compromise</li>
+      <li>✔ Results-Driven Approach</li>
+      <li>✔ After-Launch Support</li>
     </ul>
   </div>
 
-  <hr class="my-5">
+  <hr class="my-5" data-aos="fade-in">
 
-  <p class="text-muted fade-in">
-  Want to explore more? Browse our <a href="/automation-tools">automation tools</a> or 
-  <a href="/support">get support or make an inquiry</a>.
-</p>
+  <p class="text-muted" data-aos="fade-up">
+    Want to explore more? Browse our <a href="/automation-tools">automation tools</a> or 
+    <a href="/support">get support or make an inquiry</a>.
+  </p>
 
-<div class="text-center mt-5">
-  <h3 class="fw-bold fade-zoom display-6">📞 Let’s Work Together</h3>
-  <a href="/support" class="btn btn-primary btn-lg">Get in Touch</a>
+  <div class="text-center mt-5" data-aos="zoom-in">
+    <h3 class="fw-bold display-6">📞 Let’s Work Together</h3>
+    <a href="/support" class="btn btn-primary btn-lg">Get in Touch</a>
+  </div>
+
 </div>
 
 {% endblock %}
