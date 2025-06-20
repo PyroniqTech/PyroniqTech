@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.http import HttpResponse
+import traceback
 from django.core.management import call_command
 
 
@@ -37,9 +38,11 @@ def create_superuser_easy(request):
     except Exception as e:
         return HttpResponse(f"❌ Internal Server Error: {str(e)}")
 
+
 def run_migrations(request):
     try:
         call_command('migrate')
         return HttpResponse("✅ Migrations ran successfully.")
     except Exception as e:
-        return HttpResponse(f"❌ Migration error: {str(e)}")
+        error_message = traceback.format_exc()
+        return HttpResponse(f"❌ Migration error:<br><pre>{error_message}</pre>")
