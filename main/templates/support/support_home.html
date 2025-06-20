@@ -1,6 +1,84 @@
 {% extends 'support/base.html' %}
 
 {% block content %}
+<style>
+  h1.display-4 {
+    padding-top: 30px;
+    padding-bottom: 10px;
+  }
+
+  .support-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #f0f0f0;
+    height: 100%;
+  }
+
+  .support-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  }
+
+  .btn-lg {
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  .btn-lg:hover {
+    transform: scale(1.03);
+  }
+
+  section:not(:last-child)::after {
+    content: '';
+    display: block;
+    margin: 3rem auto;
+    width: 40%;
+    border-bottom: 1px solid #e2e2e2;
+  }
+
+  .support-card h5 {
+    font-weight: 600;
+    color: #2c2c2c;
+    font-size: 1.1rem;
+  }
+
+  form .form-control {
+    padding: 0.75rem 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .support-card .card-body {
+      padding: 1.2rem;
+    }
+    .support-card h5 {
+      font-size: 1rem;
+    }
+    .btn-lg {
+      font-size: 1rem;
+      padding: 0.75rem 1.25rem;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .support-card h5 {
+      font-size: 1.2rem;
+    }
+    .btn-lg {
+      font-size: 1.1rem;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .support-card h5 {
+      font-size: 1.25rem;
+    }
+    h1.display-4 {
+      font-size: 3.5rem;
+    }
+    .lead {
+      font-size: 1.25rem;
+    }
+  }
+</style>
+
 <section class="text-center">
   <h1 class="fw-bold display-4" data-aos="fade-down">Support Center</h1>
   <p class="lead text-muted" data-aos="fade-up" data-aos-delay="100">Explore help categories or contact our support team.</p>
@@ -11,86 +89,27 @@
 
   <div class="container my-5">
     <div class="row g-4 justify-content-center">
-      <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
-        <a href="{% url 'general' %}" class="text-decoration-none text-dark">
-          <div class="card support-card">
-            <div class="card-body">
-              <div class="fs-1">📄</div>
-              <h5 class="mt-2 fw-semibold">General Inquiries</h5>
+      {% for category, icon, title, delay in [
+        ('general', '📄', 'General Inquiries', '100'),
+        ('ai_bot_help', '🤖', 'AI Bot Help', '150'),
+        ('automation_help', '⚙️', 'Automation Help', '200'),
+        ('technical', '🛠', 'Technical Support', '250'),
+        ('project_status', '📊', 'Project Status', '300'),
+        ('payment_issues', '💳', 'Billing Issues', '350'),
+        ('bot_installation', '📦', 'Bot Installation', '400'),
+        ('live_chat', '💬', 'Live Chat', '450')
+      ] %}
+      <div class="col-md-3" data-aos="fade-up" data-aos-delay="{{ delay }}">
+        <a href="{% url category %}" class="text-decoration-none text-dark">
+          <div class="card support-card h-100">
+            <div class="card-body text-center">
+              <div class="fs-1">{{ icon }}</div>
+              <h5 class="mt-2 fw-semibold">{{ title }}</h5>
             </div>
           </div>
         </a>
       </div>
-      <div class="col-md-3" data-aos="fade-up" data-aos-delay="150">
-        <a href="{% url 'ai_bot_help' %}" class="text-decoration-none text-dark">
-          <div class="card support-card">
-            <div class="card-body">
-              <div class="fs-1">🤖</div>
-              <h5 class="mt-2 fw-semibold">AI Bot Help</h5>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
-        <a href="{% url 'automation_help' %}" class="text-decoration-none text-dark">
-          <div class="card support-card">
-            <div class="card-body">
-              <div class="fs-1">⚙️</div>
-              <h5 class="mt-2 fw-semibold">Automation Help</h5>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-3" data-aos="fade-up" data-aos-delay="250">
-        <a href="{% url 'technical' %}" class="text-decoration-none text-dark">
-          <div class="card support-card">
-            <div class="card-body">
-              <div class="fs-1">🛠</div>
-              <h5 class="mt-2 fw-semibold">Technical Support</h5>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
-        <a href="{% url 'project_status' %}" class="text-decoration-none text-dark">
-          <div class="card support-card">
-            <div class="card-body">
-              <div class="fs-1">📊</div>
-              <h5 class="mt-2 fw-semibold">Project Status</h5>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-3" data-aos="fade-up" data-aos-delay="350">
-        <a href="{% url 'payment_issues' %}" class="text-decoration-none text-dark">
-          <div class="card support-card">
-            <div class="card-body">
-              <div class="fs-1">💳</div>
-              <h5 class="mt-2 fw-semibold">Billing Issues</h5>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
-        <a href="{% url 'bot_installation' %}" class="text-decoration-none text-dark">
-          <div class="card support-card">
-            <div class="card-body">
-              <div class="fs-1">📦</div>
-              <h5 class="mt-2 fw-semibold">Bot Installation</h5>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="col-md-3" data-aos="fade-up" data-aos-delay="450">
-        <a href="{% url 'live_chat' %}" class="text-decoration-none text-dark">
-          <div class="card support-card">
-            <div class="card-body">
-              <div class="fs-1">💬</div>
-              <h5 class="mt-2 fw-semibold">Live Chat</h5>
-            </div>
-          </div>
-        </a>
-      </div>
+      {% endfor %}
     </div>
   </div>
 
