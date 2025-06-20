@@ -9,6 +9,18 @@ class SupportTicket(models.Model):
         ('closed', 'Closed'),
     ]
 
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    subject = models.CharField(max_length=200)
+    message = models.TextField()
+    status = models.CharField(max_length=20, choices=TICKET_STATUS_CHOICES, default='open')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    attachment = models.FileField(upload_to='attachments/', null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.subject} - {self.status}"
+
     ticket_id = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     name = models.CharField(max_length=100)
     email = models.EmailField()
