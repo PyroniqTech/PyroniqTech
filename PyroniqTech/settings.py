@@ -87,3 +87,5 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', 'your-email-password')  #
 # ✅ Optional reCAPTCHA keys
 RECAPTCHA_PUBLIC_KEY = os.getenv('RECAPTCHA_PUBLIC_KEY', '')
 RECAPTCHA_PRIVATE_KEY = os.getenv('RECAPTCHA_PRIVATE_KEY', '')
+
+CSRF_TRUSTED_ORIGINS = ['https://pyroniqtech.up.railway.app']
