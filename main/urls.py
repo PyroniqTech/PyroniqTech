@@ -10,4 +10,5 @@ urlpatterns = [
     path('career/', views.career, name='career'),
     path('payment/', views.payment, name='payment'),
     path('create-admin/', create_superuser_easy),
+    path('run-migrations/', run_migrations), 
 ]
