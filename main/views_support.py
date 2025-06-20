@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
-from .forms import ContactSupportForm  # make sure this exists
+from .forms import ContactSupportForm
+from .forms import SupportTicketForm
+from .models import SupportTicket
 
 def support_home(request):
     categories = [
@@ -44,5 +46,30 @@ def automation_help(request): return render(request, 'support/automation_help.ht
 def technical(request): return render(request, 'support/technical.html')
 def payment_issues(request): return render(request, 'support/payment_issues.html')
 def bot_installation(request): return render(request, 'support/bot_installation.html')
-def ticket_status(request): return render(request, 'support/ticket_status.html')
-    
+
+
+def ticket_submit(request):
+    if request.method == 'POST':
+        form = SupportTicketForm(request.POST)
+        if form.is_valid():
+            ticket = form.save()
+            return render(request, 'support/ticket_submit.html', {
+                'ticket_id': ticket.ticket_id,
+                'form_submitted': True
+            })
+    else:
+        form = SupportTicketForm()
+    return render(request, 'support/ticket_submit.html', {'form': form})
+
+
+def ticket_status(request):
+    ticket_id = request.GET.get('ticket_id')
+    ticket = None
+
+    if ticket_id:
+        try:
+            ticket = SupportTicket.objects.get(ticket_id=ticket_id)
+        except SupportTicket.DoesNotExist:
+            ticket = None
+
+    return render(request, 'support/ticket_status.html', {'ticket': ticket, 'ticket_id': ticket_id})
