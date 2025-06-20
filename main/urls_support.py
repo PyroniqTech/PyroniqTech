@@ -13,4 +13,5 @@ urlpatterns = [
     path('bot-installation/', views_support.bot_installation, name='bot_installation'),
     path('submit-ticket/', views_support.ticket_submit, name='ticket_submit'),
     path('ticket-status/', views_support.ticket_status, name='ticket_status'),
+    path('admin-reply/<str:ticket_id>/', views_support.ticket_reply_admin, name='ticket_reply_admin'),
 ]
