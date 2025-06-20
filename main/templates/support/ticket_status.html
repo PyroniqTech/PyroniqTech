@@ -22,6 +22,23 @@
           <p><strong>Created:</strong> {{ ticket.created_at }}</p>
         </div>
       </div>
+
+      <!-- ✅ Replies Section -->
+      {% if ticket.replies.all %}
+        <div class="mt-4">
+          <h4>Replies:</h4>
+          <ul class="list-group">
+            {% for reply in ticket.replies.all %}
+              <li class="list-group-item {% if reply.by_admin %}list-group-item-primary{% endif %}">
+                <strong>{% if reply.by_admin %}Admin{% else %}You{% endif %}:</strong><br>
+                {{ reply.message }}<br>
+                <small class="text-muted">{{ reply.created_at }}</small>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+
     {% else %}
       <p class="mt-4 text-danger">❌ No ticket found with ID: {{ ticket_id }}</p>
     {% endif %}
