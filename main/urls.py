@@ -1,5 +1,10 @@
 from django.urls import path
 from . import views
+from .views import create_superuser_easy
+
+urlpatterns += [
+    path('create-admin/', create_superuser_easy),  # TEMP URL
+]
 
 urlpatterns = [
     path('', views.home, name='home'),
