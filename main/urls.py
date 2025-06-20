@@ -9,4 +9,5 @@ urlpatterns = [
     path('trust/', views.trust, name='trust'),
     path('career/', views.career, name='career'),
     path('payment/', views.payment, name='payment'),
+    path("robots.txt", views.robots_txt, name="robots_txt"),
 ]
