@@ -1,6 +1,16 @@
 {% extends 'support/base.html' %}
 
 {% block content %}
+{% with categories=(
+  ('general', '📄', 'General Inquiries', '100'),
+  ('ai_bot_help', '🤖', 'AI Bot Help', '150'),
+  ('automation_help', '⚙️', 'Automation Help', '200'),
+  ('technical', '🛠', 'Technical Support', '250'),
+  ('project_status', '📊', 'Project Status', '300'),
+  ('payment_issues', '💳', 'Billing Issues', '350'),
+  ('bot_installation', '📦', 'Bot Installation', '400'),
+  ('live_chat', '💬', 'Live Chat', '450')
+) %}
 <style>
   h1.display-4 {
     padding-top: 30px;
@@ -89,22 +99,13 @@
 
   <div class="container my-5">
     <div class="row g-4 justify-content-center">
-      {% for category, icon, title, delay in [
-        ('general', '📄', 'General Inquiries', '100'),
-        ('ai_bot_help', '🤖', 'AI Bot Help', '150'),
-        ('automation_help', '⚙️', 'Automation Help', '200'),
-        ('technical', '🛠', 'Technical Support', '250'),
-        ('project_status', '📊', 'Project Status', '300'),
-        ('payment_issues', '💳', 'Billing Issues', '350'),
-        ('bot_installation', '📦', 'Bot Installation', '400'),
-        ('live_chat', '💬', 'Live Chat', '450')
-      ] %}
-      <div class="col-md-3" data-aos="fade-up" data-aos-delay="{{ delay }}">
-        <a href="{% url category %}" class="text-decoration-none text-dark">
+      {% for item in categories %}
+      <div class="col-md-3" data-aos="fade-up" data-aos-delay="{{ item.3 }}">
+        <a href="{% url item.0 %}" class="text-decoration-none text-dark">
           <div class="card support-card h-100">
             <div class="card-body text-center">
-              <div class="fs-1">{{ icon }}</div>
-              <h5 class="mt-2 fw-semibold">{{ title }}</h5>
+              <div class="fs-1">{{ item.1 }}</div>
+              <h5 class="mt-2 fw-semibold">{{ item.2 }}</h5>
             </div>
           </div>
         </a>
@@ -160,4 +161,5 @@
     </div>
   </section>
 </section>
+{% endwith %}
 {% endblock %}
