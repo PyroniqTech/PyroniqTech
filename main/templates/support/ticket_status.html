@@ -1,1 +1,30 @@
+{% extends 'support/base.html' %}
+{% block content %}
+<div class="container py-5">
+  <h2 class="mb-4 text-center">Check Your Ticket Status</h2>
 
+  <form method="get">
+    <div class="mb-3">
+      <label for="ticket_id" class="form-label">Enter Ticket ID:</label>
+      <input type="text" name="ticket_id" id="ticket_id" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-outline-secondary">Check Status</button>
+  </form>
+
+  {% if ticket_id %}
+    <hr>
+    {% if ticket %}
+      <div class="card mt-4">
+        <div class="card-body">
+          <h5>Status: <span class="badge bg-info text-dark">{{ ticket.get_status_display }}</span></h5>
+          <p><strong>Submitted by:</strong> {{ ticket.name }} ({{ ticket.email }})</p>
+          <p><strong>Message:</strong> {{ ticket.message }}</p>
+          <p><strong>Created:</strong> {{ ticket.created_at }}</p>
+        </div>
+      </div>
+    {% else %}
+      <p class="mt-4 text-danger">❌ No ticket found with ID: {{ ticket_id }}</p>
+    {% endif %}
+  {% endif %}
+</div>
+{% endblock %}
