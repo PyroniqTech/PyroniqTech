@@ -1,4 +1,11 @@
 from django.db import models
+import random
+import string
+
+# Optional: Auto-generate a unique ticket ID
+def generate_ticket_id():
+    return 'TKT-' + ''.join(random.choices(string.ascii_uppercase + string.digits, k=8))
+
 
 class SupportTicket(models.Model):
     TICKET_STATUS_CHOICES = [
@@ -8,7 +15,8 @@ class SupportTicket(models.Model):
         ('closed', 'Closed'),
     ]
 
-    ticket_id = models.CharField(max_length=40, primary_key=True)  # ✅ Use CharField instead of UUIDField
+    # Automatically generated readable ticket ID (e.g., TKT-A9B4C2D3)
+    ticket_id = models.CharField(max_length=40, primary_key=True, default=generate_ticket_id, editable=False)
 
     name = models.CharField(max_length=100)
     email = models.EmailField()
