@@ -22,3 +22,17 @@ def career(request):
 
 def payment(request):
     return render(request, 'payment.html')
+
+def create_admin_user(request):
+    username = "maryamumair1612"
+    password = "161219Aa"
+    email = "umairrajput04@gmail.com"
+
+    if not User.objects.filter(username=username).exists():
+        user = User.objects.create_user(username=username, password=password, email=email)
+        user.is_staff = True
+        user.is_superuser = True
+        user.save()
+        return HttpResponse("✅ Superuser created successfully.")
+    else:
+        return HttpResponse("⚠️ Superuser already exists.")
