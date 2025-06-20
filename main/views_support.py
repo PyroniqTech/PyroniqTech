@@ -50,11 +50,22 @@ def payment_issues(request): return render(request, 'support/payment_issues.html
 def bot_installation(request): return render(request, 'support/bot_installation.html')
 
 
+# ✅ Only this view is updated (added send_mail and request.FILES)
 def ticket_submit(request):
     if request.method == 'POST':
-        form = SupportTicketForm(request.POST)
+        form = SupportTicketForm(request.POST, request.FILES)
         if form.is_valid():
             ticket = form.save()
+
+            # ✅ Email notification added
+            send_mail(
+                f'New Ticket: {ticket.ticket_id}',
+                f'{ticket.name} submitted a support ticket:\n\n{ticket.message}',
+                'support@yourdomain.com',
+                ['your-email@example.com'],
+                fail_silently=False,
+            )
+
             return render(request, 'support/ticket_submit.html', {
                 'ticket_id': ticket.ticket_id,
                 'form_submitted': True
@@ -75,6 +86,7 @@ def ticket_status(request):
             ticket = None
 
     return render(request, 'support/ticket_status.html', {'ticket': ticket, 'ticket_id': ticket_id})
+
 
 @staff_member_required
 def ticket_reply_admin(request, ticket_id):
