@@ -44,3 +44,5 @@ def automation_help(request): return render(request, 'support/automation_help.ht
 def technical(request): return render(request, 'support/technical.html')
 def payment_issues(request): return render(request, 'support/payment_issues.html')
 def bot_installation(request): return render(request, 'support/bot_installation.html')
+def ticket_status(request): return render(request, 'support/ticket_status.html')
+    
