@@ -1,7 +1,5 @@
 {% extends 'support/base.html' %}
-
 {% load static %}
-{% csrf_token %}
 
 {% block meta %}
   <title>Support Center – Get Help for AI, Automation, and Technical Issues</title>
@@ -17,26 +15,21 @@
       padding-top: 30px;
       padding-bottom: 10px;
     }
-
     .support-card {
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       border: 1px solid #f0f0f0;
       height: 100%;
     }
-
     .support-card:hover {
       transform: translateY(-6px);
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
     }
-
     .btn-lg {
       transition: background-color 0.3s ease, transform 0.2s ease;
     }
-
     .btn-lg:hover {
       transform: scale(1.03);
     }
-
     section:not(:last-child)::after {
       content: '';
       display: block;
@@ -44,51 +37,41 @@
       width: 40%;
       border-bottom: 1px solid #e2e2e2;
     }
-
     .support-card h5 {
       font-weight: 600;
       color: #2c2c2c;
       font-size: 1.1rem;
     }
-
     form .form-control {
       padding: 0.75rem 1rem;
     }
-
     @media (max-width: 768px) {
       .support-card .card-body {
         padding: 1.2rem;
       }
-
       .support-card h5 {
         font-size: 1rem;
       }
-
       .btn-lg {
         font-size: 1rem;
         padding: 0.75rem 1.25rem;
       }
     }
-
     @media (min-width: 992px) {
       .support-card h5 {
         font-size: 1.2rem;
       }
-
       .btn-lg {
         font-size: 1.1rem;
       }
     }
-
     @media (min-width: 1200px) {
       .support-card h5 {
         font-size: 1.25rem;
       }
-
       h1.display-4 {
         font-size: 3.5rem;
       }
-
       .lead {
         font-size: 1.25rem;
       }
@@ -105,33 +88,22 @@
       <a href="#contact-form" class="btn btn-primary btn-lg animated-cta">Get Support</a>
     </div>
 
-    {% with categories=(
-      ('general', '📄', 'General Inquiries', '100'),
-      ('ai_bot_help', '🤖', 'AI Bot Help', '150'),
-      ('automation_help', '⚙️', 'Automation Help', '200'),
-      ('technical', '🛠', 'Technical Support', '250'),
-      ('project_status', '📊', 'Project Status', '300'),
-      ('payment_issues', '💳', 'Billing Issues', '350'),
-      ('bot_installation', '📦', 'Bot Installation', '400'),
-      ('live_chat', '💬', 'Live Chat', '450')
-    ) %}
-      <div class="container my-5">
-        <div class="row g-4 justify-content-center">
-          {% for item in categories %}
-            <div class="col-md-3" data-aos="fade-up" data-aos-delay="{{ item.3 }}">
-              <a href="{% url item.0 %}" class="text-decoration-none text-dark">
-                <div class="card support-card h-100">
-                  <div class="card-body text-center">
-                    <div class="fs-1">{{ item.1 }}</div>
-                    <h5 class="mt-2 fw-semibold">{{ item.2 }}</h5>
-                  </div>
+    <div class="container my-5">
+      <div class="row g-4 justify-content-center">
+        {% for item in categories %}
+          <div class="col-md-3" data-aos="fade-up" data-aos-delay="{{ item.3 }}">
+            <a href="{% url item.0 %}" class="text-decoration-none text-dark">
+              <div class="card support-card h-100">
+                <div class="card-body text-center">
+                  <div class="fs-1">{{ item.1 }}</div>
+                  <h5 class="mt-2 fw-semibold">{{ item.2 }}</h5>
                 </div>
-              </a>
-            </div>
-          {% endfor %}
-        </div>
+              </div>
+            </a>
+          </div>
+        {% endfor %}
       </div>
-    {% endwith %}
+    </div>
 
     <section class="my-5" data-aos="fade-right">
       <div class="container">
