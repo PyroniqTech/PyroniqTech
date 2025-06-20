@@ -1,53 +1,66 @@
 {% extends 'base.html' %}
 
-{% block title %}General Support | PyroniqTech{% endblock %}
+{% block title %}General Support Inquiry | PyroniqTech{% endblock %}
 
 {% block content %}
 <div class="container py-5">
     <div class="row justify-content-center">
-        <div class="col-xl-10 col-lg-11 col-md-12">
+        <div class="col-lg-10">
             <div class="card shadow-lg border-0 rounded-4">
                 <div class="card-body p-5">
 
-                    <div class="text-center mb-5">
-                        <h1 class="fw-bold">
-                            <i class="fas fa-headset me-2 text-primary"></i>General Support Inquiry
-                        </h1>
-                        <p class="text-muted fs-5">
-                            Let us know how we can help you. We typically respond within 24 hours.
-                        </p>
-                    </div>
+                    <h2 class="mb-4 text-center fw-bold">
+                        <i class="fas fa-question-circle me-2 text-primary"></i> General Inquiry Form
+                    </h2>
+                    <p class="text-muted text-center fs-5">
+                        Select the type of inquiry and provide details so our team can assist you better.
+                    </p>
 
-                    {% with messages = get_flashed_messages(with_categories=true) %}
-                      {% if messages %}
-                        {% for category, message in messages %}
-                          <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
-                            {{ message }}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                          </div>
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
                         {% endfor %}
-                      {% endif %}
-                    {% endwith %}
+                    {% endif %}
 
-                    <form method="POST" action="{{ url_for('general_support') }}">
+                    <form method="POST" action="">
+                        {% csrf_token %}
                         <div class="row mb-4">
                             <div class="col-md-6">
-                                <label for="name" class="form-label fw-semibold">Your Name</label>
-                                <input type="text" class="form-control form-control-lg" id="name" name="name" placeholder="John Doe" required maxlength="100">
+                                <label class="form-label fw-semibold">Your Name</label>
+                                <input type="text" name="name" class="form-control form-control-lg" required maxlength="100">
                             </div>
                             <div class="col-md-6">
-                                <label for="email" class="form-label fw-semibold">Your Email</label>
-                                <input type="email" class="form-control form-control-lg" id="email" name="email" placeholder="you@example.com" required maxlength="100">
+                                <label class="form-label fw-semibold">Your Email</label>
+                                <input type="email" name="email" class="form-control form-control-lg" required maxlength="100">
                             </div>
                         </div>
+
                         <div class="mb-4">
-                            <label for="subject" class="form-label fw-semibold">Subject</label>
-                            <input type="text" class="form-control form-control-lg" id="subject" name="subject" placeholder="Write a short subject" required maxlength="150">
+                            <label class="form-label fw-semibold">Inquiry Type</label>
+                            <select name="inquiry_type" class="form-select form-select-lg" required>
+                                <option value="">Select an option</option>
+                                <option value="Service Information">Service Information</option>
+                                <option value="Pricing Inquiry">Pricing Inquiry</option>
+                                <option value="Custom Project Request">Custom Project Request</option>
+                                <option value="Technical Question">Technical Question</option>
+                                <option value="Partnership or Collaboration">Partnership or Collaboration</option>
+                                <option value="Other">Other</option>
+                            </select>
                         </div>
+
                         <div class="mb-4">
-                            <label for="message" class="form-label fw-semibold">Your Message</label>
-                            <textarea class="form-control form-control-lg" id="message" name="message" rows="8" placeholder="Describe your issue or inquiry in detail..." required maxlength="3000"></textarea>
+                            <label class="form-label fw-semibold">Subject</label>
+                            <input type="text" name="subject" class="form-control form-control-lg" required maxlength="150">
                         </div>
+
+                        <div class="mb-4">
+                            <label class="form-label fw-semibold">Your Message</label>
+                            <textarea name="message" rows="7" class="form-control form-control-lg" required maxlength="3000" placeholder="Please describe your inquiry in detail..."></textarea>
+                        </div>
+
                         <div class="d-grid">
                             <button type="submit" class="btn btn-primary btn-lg">
                                 <i class="fas fa-paper-plane me-1"></i> Submit Inquiry
@@ -55,9 +68,10 @@
                         </div>
                     </form>
 
-                    <div class="text-center mt-5 text-muted small">
-                        For urgent assistance, please email us at <strong>support@pyroniqtech.com</strong>
+                    <div class="text-center mt-4 small text-muted">
+                        For urgent support, contact us at <strong>support@pyroniqtech.com</strong>
                     </div>
+
                 </div>
             </div>
         </div>
