@@ -118,16 +118,32 @@ def general_support_view(request):
             return redirect('general_support')
 
         # Here you can log to DB or send to email if needed
-        print("\n".join([
-            f"[GENERAL INQUIRY]",
-            f"Name: {name}",
-            f"Email: {email}",
-            f"Inquiry Type: {inquiry_type}",
-            f"Subject: {subject}",
-            f"Message: {message}"
-        ]))
+         email_subject = f"[PyroniqTech Inquiry] {subject}"
+        email_body = f"""
+        You received a new inquiry from PyroniqTech.com:
 
-        messages.success(request, "Your inquiry has been submitted. We will contact you shortly.")
+        Name: {name}
+        Email: {email}
+        Inquiry Type: {inquiry_type}
+        Subject: {subject}
+
+        Message:
+        {message}
+        """
+
+        try:
+            send_mail(
+                subject=email_subject,
+                message=email_body,
+                from_email='support@pyroniqtech.com',  # Can be DEFAULT_FROM_EMAIL
+                recipient_list=['umairrajput04@gmail.com'],  # 👈 Replace with YOUR email
+                fail_silently=False,
+            )
+            messages.success(request, "Your inquiry has been sent successfully.")
+        except Exception as e:
+            print(f"Error sending email: {e}")
+            messages.error(request, "Failed to send email. Please try again later.")
+
         return redirect('general_support')
 
     return render(request, 'support/general.html')
