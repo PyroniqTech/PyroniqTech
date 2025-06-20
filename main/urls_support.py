@@ -11,4 +11,5 @@ urlpatterns = [
     path('technical/', views_support.technical, name='technical'),
     path('payment/', views_support.payment_issues, name='payment_issues'),
     path('bot-installation/', views_support.bot_installation, name='bot_installation'),
+    path('ticket-status/', views_support.ticket_status, name='ticket_status'),
 ]
