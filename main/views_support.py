@@ -120,23 +120,23 @@ def general_support_view(request):
         # Here you can log to DB or send to email if needed
         email_subject = f"[PyroniqTech Inquiry] {subject}"
         email_body = f"""
-        You received a new inquiry from PyroniqTech.com:
+You received a new inquiry from PyroniqTech.com:
 
-        Name: {name}
-        Email: {email}
-        Inquiry Type: {inquiry_type}
-        Subject: {subject}
+Name: {name}
+Email: {email}
+Inquiry Type: {inquiry_type}
+Subject: {subject}
 
-        Message:
-        {message}
-        """
+Message:
+{message}
+"""
 
         try:
             send_mail(
                 subject=email_subject,
                 message=email_body,
                 from_email='support@pyroniqtech.com',  # Can be DEFAULT_FROM_EMAIL
-                recipient_list=['umairrajput04@gmail.com'],  # 👈 Replace with YOUR email
+                recipient_list=['umairrajput04@gmail.com'],
                 fail_silently=False,
             )
             messages.success(request, "Your inquiry has been sent successfully.")
