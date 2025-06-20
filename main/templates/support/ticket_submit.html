@@ -1,0 +1,20 @@
+{% extends 'support/base.html' %}
+{% block content %}
+<div class="container py-5">
+  <h2 class="mb-4 text-center">Submit a Support Ticket</h2>
+
+  {% if form_submitted %}
+    <div class="alert alert-success text-center">
+      Ticket submitted successfully!<br>
+      Your Ticket ID: <strong>{{ ticket_id }}</strong><br>
+      Save this ID to check your status.
+    </div>
+  {% else %}
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-primary">Submit Ticket</button>
+    </form>
+  {% endif %}
+</div>
+{% endblock %}
