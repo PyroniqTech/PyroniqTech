@@ -1,0 +1,28 @@
+{% extends 'support/base.html' %}
+{% block content %}
+<div class="container mt-5">
+  <h3>Reply to Ticket: {{ ticket.ticket_id }}</h3>
+  <p><strong>User:</strong> {{ ticket.name }} - {{ ticket.email }}</p>
+  <p><strong>Message:</strong> {{ ticket.message }}</p>
+
+  <h4 class="mt-4">Replies:</h4>
+  <ul class="list-group mb-4">
+    {% for reply in ticket.replies.all %}
+      <li class="list-group-item {% if reply.by_admin %}list-group-item-primary{% endif %}">
+        <strong>{% if reply.by_admin %}Admin{% else %}User{% endif %}</strong><br>
+        {{ reply.message }}<br>
+        <small class="text-muted">{{ reply.created_at }}</small>
+      </li>
+    {% empty %}
+      <li class="list-group-item">No replies yet.</li>
+    {% endfor %}
+  </ul>
+
+  <h4>Add a Reply:</h4>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-primary" type="submit">Send Reply</button>
+  </form>
+</div>
+{% endblock %}
