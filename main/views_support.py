@@ -5,7 +5,6 @@ from .forms import SupportTicketForm
 from .models import SupportTicket
 from django.contrib.admin.views.decorators import staff_member_required
 from .forms import TicketReplyForm
-from django.shortcuts import render, redirect
 from django.contrib import messages
 
 def support_home(request):
@@ -42,14 +41,29 @@ def support_home(request):
 
 
 # Other views
-def general(request): return render(request, 'support/general.html')
-def ai_bot_help(request): return render(request, 'support/ai_bot_help.html')
-def live_chat(request): return render(request, 'support/live_chat.html')
-def project_status(request): return render(request, 'support/project_status.html')
-def automation_help(request): return render(request, 'support/automation_help.html')
-def technical(request): return render(request, 'support/technical.html')
-def payment_issues(request): return render(request, 'support/payment_issues.html')
-def bot_installation(request): return render(request, 'support/bot_installation.html')
+def general(request):
+    return render(request, 'support/general.html')
+
+def ai_bot_help(request):
+    return render(request, 'support/ai_bot_help.html')
+
+def live_chat(request):
+    return render(request, 'support/live_chat.html')
+
+def project_status(request):
+    return render(request, 'support/project_status.html')
+
+def automation_help(request):
+    return render(request, 'support/automation_help.html')
+
+def technical(request):
+    return render(request, 'support/technical.html')
+
+def payment_issues(request):
+    return render(request, 'support/payment_issues.html')
+
+def bot_installation(request):
+    return render(request, 'support/bot_installation.html')
 
 
 # ✅ Only this view is updated (added send_mail and request.FILES)
@@ -104,6 +118,7 @@ def ticket_reply_admin(request, ticket_id):
     else:
         form = TicketReplyForm()
     return render(request, 'support/ticket_reply_admin.html', {'ticket': ticket, 'form': form})
+
 
 def general_support_view(request):
     if request.method == 'POST':
