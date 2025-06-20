@@ -11,6 +11,92 @@
 
   <!-- ✅ AOS CSS -->
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+  <!-- ✅ UX & Responsive Enhancements -->
+  <style>
+    /* 1. Hero heading spacing */
+    h1.display-4 {
+      padding-top: 30px;
+      padding-bottom: 10px;
+    }
+
+    /* 2. Card hover + transitions */
+    .support-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid #f0f0f0;
+      height: 100%;
+    }
+
+    .support-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    /* 3. Call-to-action button animation */
+    .btn-lg {
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-lg:hover {
+      transform: scale(1.03);
+    }
+
+    /* 4. Section divider between blocks */
+    section:not(:last-child)::after {
+      content: '';
+      display: block;
+      margin: 3rem auto;
+      width: 40%;
+      border-bottom: 1px solid #e2e2e2;
+    }
+
+    /* 5. Clear headings inside cards */
+    .support-card h5 {
+      font-weight: 600;
+      color: #2c2c2c;
+      font-size: 1.1rem;
+    }
+
+    /* 6. A bit tighter padding for form fields */
+    form .form-control {
+      padding: 0.75rem 1rem;
+    }
+
+    /* 7. Responsive Enhancements for All Screen Sizes */
+    @media (max-width: 768px) {
+      .support-card .card-body {
+        padding: 1.2rem;
+      }
+      .support-card h5 {
+        font-size: 1rem;
+      }
+      .btn-lg {
+        font-size: 1rem;
+        padding: 0.75rem 1.25rem;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .support-card h5 {
+        font-size: 1.2rem;
+      }
+      .btn-lg {
+        font-size: 1.1rem;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .support-card h5 {
+        font-size: 1.25rem;
+      }
+      h1.display-4 {
+        font-size: 3.5rem;
+      }
+      .lead {
+        font-size: 1.25rem;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -41,8 +127,8 @@
     AOS.init({
       duration: 700,
       offset: 100,
-      once: false, // 🚨 allow re-animation when scrolling back up
-      mirror: true // 🚨 trigger animations on scroll up too
+      once: false,
+      mirror: true
     });
   </script>
 </body>
