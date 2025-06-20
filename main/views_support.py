@@ -3,6 +3,8 @@ from django.core.mail import send_mail
 from .forms import ContactSupportForm
 from .forms import SupportTicketForm
 from .models import SupportTicket
+from django.contrib.admin.views.decorators import staff_member_required
+from .forms import TicketReplyForm
 
 def support_home(request):
     categories = [
@@ -73,3 +75,18 @@ def ticket_status(request):
             ticket = None
 
     return render(request, 'support/ticket_status.html', {'ticket': ticket, 'ticket_id': ticket_id})
+
+@staff_member_required
+def ticket_reply_admin(request, ticket_id):
+    ticket = SupportTicket.objects.get(ticket_id=ticket_id)
+    if request.method == 'POST':
+        form = TicketReplyForm(request.POST)
+        if form.is_valid():
+            reply = form.save(commit=False)
+            reply.ticket = ticket
+            reply.by_admin = True
+            reply.save()
+            return redirect('ticket_reply_admin', ticket_id=ticket_id)
+    else:
+        form = TicketReplyForm()
+    return render(request, 'support/ticket_reply_admin.html', {'ticket': ticket, 'form': form})
