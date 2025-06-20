@@ -118,7 +118,7 @@ def general_support_view(request):
             return redirect('general_support')
 
         # Here you can log to DB or send to email if needed
-         email_subject = f"[PyroniqTech Inquiry] {subject}"
+        email_subject = f"[PyroniqTech Inquiry] {subject}"
         email_body = f"""
         You received a new inquiry from PyroniqTech.com:
 
