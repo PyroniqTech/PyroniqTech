@@ -23,3 +23,6 @@ def career(request):
 def payment(request):
     return render(request, 'payment.html')
 
+def robots_txt(request):
+    content = "User-agent: *\nDisallow:"
+    return HttpResponse(content, content_type="text/plain")
