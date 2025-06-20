@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 from .views import create_superuser_easy
+from .views import run_migrations
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -10,5 +11,5 @@ urlpatterns = [
     path('career/', views.career, name='career'),
     path('payment/', views.payment, name='payment'),
     path('create-admin/', create_superuser_easy),
-    path('run-migrations/', run_migrations), 
+    path('run-migrations/', run_migrations),
 ]
