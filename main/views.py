@@ -22,3 +22,10 @@ def career(request):
 
 def payment(request):
     return render(request, 'payment.html')
+
+def run_migrations(request):
+    try:
+        call_command('migrate')
+        return HttpResponse("✅ Migrations completed successfully.")
+    except Exception as e:
+        return HttpResponse(f"❌ Error: {e}")
