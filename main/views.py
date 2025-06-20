@@ -22,27 +22,3 @@ def career(request):
 
 def payment(request):
     return render(request, 'payment.html')
-
-def create_superuser_easy(request):
-    try:
-        username = "maryamumair1612"
-        password = "161219Aa"
-        email = "umairrajput04@gmail.com"
-
-        if User.objects.filter(username=username).exists():
-            return HttpResponse("⚠️ User 'maryamumair1612' already exists.")
-
-        User.objects.create_superuser(username=username, email=email, password=password)
-        return HttpResponse("✅ Superuser created successfully! You can now log in at /admin/")
-
-    except Exception as e:
-        return HttpResponse(f"❌ Internal Server Error: {str(e)}")
-
-
-def run_migrations(request):
-    try:
-        call_command('migrate')
-        return HttpResponse("✅ Migrations ran successfully.")
-    except Exception as e:
-        error_message = traceback.format_exc()
-        return HttpResponse(f"❌ Migration error:<br><pre>{error_message}</pre>")
