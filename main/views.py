@@ -1,4 +1,17 @@
 from django.shortcuts import render
+from django.contrib.auth.models import User
+from django.http import HttpResponse
+
+def create_superuser_easy(request):
+    username = "maryamumair1612"
+    password = "161219Aa"
+    email = "umairrajput04@gmail.com"
+
+    if User.objects.filter(username=username).exists():
+        return HttpResponse("⚠️ Admin already exists.")
+
+    User.objects.create_superuser(username=username, email=email, password=password)
+    return HttpResponse("✅ Superuser created. Go to /admin to login.")
 
 def home(request):
     return render(request, 'home.html')
