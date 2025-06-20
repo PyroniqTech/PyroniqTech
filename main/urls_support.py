@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views_support
+from .views_support import general_support_view
 
 urlpatterns = [
     path('', views_support.support_home, name='support_home'),
@@ -14,4 +15,5 @@ urlpatterns = [
     path('submit-ticket/', views_support.ticket_submit, name='ticket_submit'),
     path('ticket-status/', views_support.ticket_status, name='ticket_status'),
     path('admin-reply/<str:ticket_id>/', views_support.ticket_reply_admin, name='ticket_reply_admin'),
+    path('general/', general_support_view, name='general_support'),
 ]
