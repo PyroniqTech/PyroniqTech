@@ -5,6 +5,8 @@ from .forms import SupportTicketForm
 from .models import SupportTicket
 from django.contrib.admin.views.decorators import staff_member_required
 from .forms import TicketReplyForm
+from django.shortcuts import render, redirect
+from django.contrib import messages
 
 def support_home(request):
     categories = [
@@ -102,3 +104,30 @@ def ticket_reply_admin(request, ticket_id):
     else:
         form = TicketReplyForm()
     return render(request, 'support/ticket_reply_admin.html', {'ticket': ticket, 'form': form})
+
+def general_support_view(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        inquiry_type = request.POST.get('inquiry_type')
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
+
+        if not all([name, email, inquiry_type, subject, message]):
+            messages.error(request, "Har field bharna zaroori hai.")
+            return redirect('general_support')
+
+        # Here you can log to DB or send to email if needed
+        print("\n".join([
+            f"[GENERAL INQUIRY]",
+            f"Name: {name}",
+            f"Email: {email}",
+            f"Inquiry Type: {inquiry_type}",
+            f"Subject: {subject}",
+            f"Message: {message}"
+        ]))
+
+        messages.success(request, "Your inquiry has been submitted. We will contact you shortly.")
+        return redirect('general_support')
+
+    return render(request, 'support/general.html')
