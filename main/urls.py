@@ -3,7 +3,6 @@ from . import views
 from .views import run_migrations
 from .views import create_admin
     
-]
 
 urlpatterns = [
     path('', views.home, name='home'),
