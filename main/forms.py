@@ -7,6 +7,12 @@ class SupportTicketForm(forms.ModelForm):
         fields = ['name', 'email', 'message']
 
 
+class TicketReplyForm(forms.ModelForm):
+    class Meta:
+        model = TicketReply
+        fields = ['message']
+
+
 class ContactSupportForm(forms.Form):
     name = forms.CharField(
         max_length=100,
