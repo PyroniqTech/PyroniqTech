@@ -40,11 +40,6 @@ class TicketReply(models.Model):
         return f"Reply to {self.ticket.ticket_id}"
 
 
-class TrustRating(models.Model):
-    stars = models.IntegerField()
-    submitted_at = models.DateTimeField(auto_now_add=True)
-    ip_address = models.GenericIPAddressField(null=True, blank=True)
-
 class Review(models.Model):
     name = models.CharField(max_length=100)
     country = models.CharField(max_length=100)
@@ -53,3 +48,11 @@ class Review(models.Model):
 
     def __str__(self):
         return f"{self.name} ({self.country})"
+
+class Rating(models.Model):
+    ip = models.GenericIPAddressField(unique=True)
+    stars = models.IntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.ip} - {self.stars}★"
