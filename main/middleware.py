@@ -2,7 +2,7 @@ from django.conf import settings
 from django.shortcuts import render
 
 # Replace with your actual IP below
-ALLOWED_DEV_IP = '127.0.0.1'  # Change this to your real IP later
+ALLOWED_DEV_IP = '154.198.117.181'  # Change this to your real IP later
 
 class UnderDevelopmentMiddleware:
     def __init__(self, get_response):
