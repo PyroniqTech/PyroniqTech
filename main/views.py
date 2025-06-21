@@ -20,6 +20,7 @@ def about(request):
 
 def trust(request):
     print("Trust view loaded")
+    try:
         avg_rating = TrustRating.objects.aggregate(avg=Avg('stars'))['avg']
     except:
         avg_rating = None
