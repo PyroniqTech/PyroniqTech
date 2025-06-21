@@ -14,5 +14,7 @@ class UnderDevelopmentMiddleware:
 
         if settings.DEBUG:
             if user_ip != ALLOWED_DEV_IP and not any(request.path.startswith(p) for p in allowed_paths):
+                import os
+print("\n\nTEMPLATE DIR CHECK:", os.listdir(os.path.join(BASE_DIR, 'main', 'templates')),"\n\n")
                 return render(request, 'under_development.html')
         return self.get_response(request)
