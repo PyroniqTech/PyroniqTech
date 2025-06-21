@@ -127,12 +127,12 @@ def general_support_view(request):
         inquiry_type = request.POST.get('inquiry_type')
         subject = request.POST.get('subject')
         message = request.POST.get('message')
+        file = request.FILES.get('attachment')  # Optional file
 
         if not all([name, email, inquiry_type, subject, message]):
             messages.error(request, "Har field bharna zaroori hai.")
             return redirect('general_support')
 
-        # Here you can log to DB or send to email if needed
         email_subject = f"[PyroniqTech Inquiry] {subject}"
         email_body = f"""
 You received a new inquiry from PyroniqTech.com:
@@ -147,13 +147,18 @@ Message:
 """
 
         try:
-            send_mail(
+            msg = EmailMessage(
                 subject=email_subject,
-                message=email_body,
-                from_email='support@pyroniqtech.com',  # Can be DEFAULT_FROM_EMAIL
-                recipient_list=['umairrajput04@gmail.com'],
-                fail_silently=False,
+                body=email_body,
+                from_email='PyroniqTech Support <support@pyroniqtech.com>',
+                to=['umairrajput04@gmail.com'],
+                reply_to=[email]
             )
+
+            if file:
+                msg.attach(file.name, file.read(), file.content_type)
+
+            msg.send()
             messages.success(request, "Your inquiry has been sent successfully.")
         except Exception as e:
             print(f"Error sending email: {e}")
