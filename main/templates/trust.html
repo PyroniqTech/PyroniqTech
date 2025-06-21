@@ -103,18 +103,29 @@
             <!-- Service Rating -->
             <div class="card shadow-sm border-0 rounded-4 mt-4" data-aos="zoom-in" data-aos-delay="600">
                 <div class="card-body p-4 text-center">
-                    <h4 class="fw-semibold mb-3"><i class="fas fa-star-half-alt me-2 text-primary"></i> Rate Your Experience</h4>
+                    <h4 class="fw-semibold mb-3">
+                        <i class="fas fa-star-half-alt me-2 text-primary"></i> Rate Your Experience
+                    </h4>
                     <p class="text-muted mb-3">How would you rate your experience with PyroniqTech so far?</p>
-                    <div class="fs-4">
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="fas fa-star text-warning"></i>
-                        <i class="far fa-star text-warning"></i>
+
+                    <!-- Interactive Stars -->
+                    <div id="rating-stars" class="fs-4 mb-2">
+                        {% for i in "12345" %}
+                          <i class="fas fa-star star-icon text-muted" data-value="{{ forloop.counter }}"></i>
+                        {% endfor %}
                     </div>
-                    <small class="text-muted d-block mt-2">(Visual only — interactive rating coming soon!)</small>
+
+                    {% if average_rating %}
+                    <div class="small text-muted">
+                        Average rating: {{ average_rating|floatformat:1 }} / 5
+                    </div>
+                    {% endif %}
+
+                    <div id="rating-response" class="text-success fw-semibold mt-2" style="display:none;"></div>
                 </div>
             </div>
+
         </div>
     </div>
+</div>
 {% endblock %}
