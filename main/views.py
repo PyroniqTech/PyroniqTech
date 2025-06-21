@@ -21,8 +21,8 @@ def about(request):
 def trust(request):
     try:
         avg_rating = TrustRating.objects.aggregate(avg=Avg('stars'))['avg']
-    except Exception as e:
-        avg_rating = None  # fallback
+    except:
+        avg_rating = None
     return render(request, 'trust.html', {'average_rating': avg_rating})
 
 def career(request):
