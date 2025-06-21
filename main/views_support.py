@@ -6,6 +6,9 @@ from .models import SupportTicket
 from django.contrib.admin.views.decorators import staff_member_required
 from .forms import TicketReplyForm
 from django.contrib import messages
+from django.conf import settings
+from django.core.mail import EmailMessage, EmailMultiAlternatives
+from django.utils.html import strip_tags
 
 def support_home(request):
     categories = [
@@ -127,7 +130,7 @@ def general_support_view(request):
         inquiry_type = request.POST.get('inquiry_type')
         subject = request.POST.get('subject')
         message = request.POST.get('message')
-        file = request.FILES.get('attachment')  # Optional file
+        file = request.FILES.get('attachment')
 
         if not all([name, email, inquiry_type, subject, message]):
             messages.error(request, "Har field bharna zaroori hai.")
@@ -147,6 +150,7 @@ Message:
 """
 
         try:
+            # Email to company inbox
             msg = EmailMessage(
                 subject=email_subject,
                 body=email_body,
@@ -154,11 +158,33 @@ Message:
                 to=['umairrajput04@gmail.com'],
                 reply_to=[email]
             )
-
             if file:
                 msg.attach(file.name, file.read(), file.content_type)
-
             msg.send()
+
+            # Auto-reply to visitor
+            html_content = f"""
+              <div style="font-family: Arial, sans-serif; padding: 20px; background-color: #f9f9f9;">
+                <h2 style="color: #0d6efd;">Thank you for contacting PyroniqTech, {name}!</h2>
+                <p>We've received your inquiry and will get back to you as soon as possible.</p>
+                <hr>
+                <p style="font-weight: bold; color: #333;">Your Message:</p>
+                <p style="color: #555;">{message}</p>
+                <hr>
+                <p style="font-size: 14px; color: #777;">This is an automated response. For further assistance, feel free to reply to this email.</p>
+                <p style="color: #0d6efd;">– PyroniqTech Support Team</p>
+              </div>
+            """
+            text_content = strip_tags(html_content)
+            confirmation_email = EmailMultiAlternatives(
+                subject="PyroniqTech – Confirmation of Your Inquiry",
+                body=text_content,
+                from_email='PyroniqTech Support <support@pyroniqtech.com>',
+                to=[email]
+            )
+            confirmation_email.attach_alternative(html_content, "text/html")
+            confirmation_email.send()
+
             messages.success(request, "Your inquiry has been sent successfully.")
         except Exception as e:
             print(f"Error sending email: {e}")
