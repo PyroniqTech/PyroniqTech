@@ -21,8 +21,8 @@ def about(request):
 def trust(request):
     try:
         avg_rating = TrustRating.objects.aggregate(avg=Avg('stars'))['avg']
-    except:
-        avg_rating = None  # In case the table still doesn’t exist
+    except Exception as e:
+        avg_rating = None  # fallback
     return render(request, 'trust.html', {'average_rating': avg_rating})
 
 def career(request):
