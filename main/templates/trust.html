@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% block title %}Trust & Transparency | PyroniqTech{% endblock %}
 
 {% block content %}
@@ -55,18 +54,8 @@
                 </div>
             </div>
 
-            <!-- Contact Info -->
-            <div class="card shadow-sm border-0 rounded-4" data-aos="fade-up" data-aos-delay="400">
-                <div class="card-body p-4">
-                    <h4 class="fw-semibold mb-3"><i class="fas fa-envelope-open-text me-2 text-primary"></i> Contact Us</h4>
-                    <p class="mb-0">
-                        Found a security concern or have a trust question? Email us at <strong>support@pyroniqtech.com</strong>.
-                    </p>
-                </div>
-            </div>
-
             <!-- Feedback Form -->
-            <div class="card shadow-sm border-0 rounded-4 mt-5" data-aos="fade-up" data-aos-delay="500">
+            <div class="card shadow-sm border-0 rounded-4 mt-5" data-aos="fade-up" data-aos-delay="400">
                 <div class="card-body p-4">
                     <h4 class="fw-semibold mb-3"><i class="fas fa-comments me-2 text-primary"></i> Your Feedback Matters</h4>
                     <p class="text-muted">Tell us how we’re doing — feedback helps us improve.</p>
@@ -101,7 +90,7 @@
             </div>
 
             <!-- Service Rating -->
-            <div class="card shadow-sm border-0 rounded-4 mt-4" data-aos="zoom-in" data-aos-delay="600">
+            <div class="card shadow-sm border-0 rounded-4 mt-4" data-aos="zoom-in" data-aos-delay="500">
                 <div class="card-body p-4 text-center">
                     <h4 class="fw-semibold mb-3">
                         <i class="fas fa-star-half-alt me-2 text-primary"></i> Rate Your Experience
@@ -117,7 +106,7 @@
 
                     {% if average_rating %}
                     <div class="small text-muted">
-                        Average rating: {{ average_rating|floatformat:1 }} / 5
+                        Average rating: <span id="rating-count">{{ average_rating|floatformat:1 }}</span> / 5
                     </div>
                     {% endif %}
 
@@ -128,4 +117,47 @@
         </div>
     </div>
 </div>
+
+<!-- Star Rating Script -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const stars = document.querySelectorAll('.star-icon');
+    const responseBox = document.getElementById('rating-response');
+    let submitted = false;
+
+    stars.forEach(star => {
+        star.addEventListener('click', function () {
+            if (submitted) return;
+            const rating = this.getAttribute('data-value');
+
+            fetch("{% url 'submit_rating' %}", {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}',
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: 'stars=' + rating
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    responseBox.textContent = 'Thank you for your rating!';
+                    responseBox.style.display = 'block';
+                    stars.forEach(s => {
+                        if (s.getAttribute('data-value') <= rating) {
+                            s.classList.remove('text-muted');
+                            s.classList.add('text-warning');
+                        }
+                    });
+                    submitted = true;
+                } else {
+                    responseBox.textContent = 'You already rated. Thank you!';
+                    responseBox.classList.add('text-danger');
+                    responseBox.style.display = 'block';
+                }
+            });
+        });
+    });
+});
+</script>
 {% endblock %}
