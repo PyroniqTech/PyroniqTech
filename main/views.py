@@ -6,7 +6,7 @@ from django.core.management import call_command
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
-from .models import trustrating
+from .models import TrustRating
 from django.db.models import Avg
 from .models import Review, Rating
 
