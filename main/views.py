@@ -19,7 +19,6 @@ def about(request):
     return render(request, 'about.html')
 
 def trust(request):
-    print("Trust view loaded")
     try:
         avg_rating = TrustRating.objects.aggregate(avg=Avg('stars'))['avg']
     except:
