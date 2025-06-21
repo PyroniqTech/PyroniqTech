@@ -133,5 +133,14 @@
       mirror: true
     });
   </script>
+
+  <script>
+    window.onload = function () {
+      const alertBox = document.querySelector('.alert');
+      if (alertBox) {
+      alertBox.scrollIntoView({ behavior: 'smooth' });
+      }
+    };
+  </script>
 </body>
 </html>
