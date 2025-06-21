@@ -49,3 +49,8 @@ def submit_rating(request):
 def trust(request):
     avg_rating = TrustRating.objects.aggregate(avg=Avg('stars'))['avg']
     return render(request, 'trust.html', {'average_rating': avg_rating})
+
+
+def trust(request):
+    call_command("migrate", interactive=False)  # auto-applies pending migrations
+    ...
