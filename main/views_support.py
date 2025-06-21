@@ -164,6 +164,6 @@ Message:
             print(f"Error sending email: {e}")
             messages.error(request, "Failed to send email. Please try again later.")
 
-        #return redirect('general_support')
+        return redirect('general_support')
 
     return render(request, 'support/general.html')
