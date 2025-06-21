@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.shortcuts import render
+import os
 
 # Replace with your actual IP below
 ALLOWED_DEV_IP = '154.198.117.181'  # Change this to your real IP later
@@ -14,7 +15,7 @@ class UnderDevelopmentMiddleware:
 
         if settings.DEBUG:
             if user_ip != ALLOWED_DEV_IP and not any(request.path.startswith(p) for p in allowed_paths):
-                import os
-print("\n\nTEMPLATE DIR CHECK:", os.listdir(os.path.join(BASE_DIR, 'main', 'templates')),"\n\n")
+                print("\n\nTEMPLATE DIR CHECK:", os.listdir(os.path.join(settings.BASE_DIR, 'main', 'templates')), "\n\n")
                 return render(request, 'under_development.html')
+
         return self.get_response(request)
