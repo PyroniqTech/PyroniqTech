@@ -1,79 +1,121 @@
-{% extends 'base.html' %}
-{% block title %}Trust & Transparency | PyroniqTech{% endblock %}
+{% extends 'base.html' %} {% load static %} {% block title %}Why Users Trust PyroniqTech – Feedback & Ratings{% endblock %}
 
 {% block content %}
+
 <div class="container py-5" data-aos="fade-up">
   <div class="row justify-content-center">
-    <div class="col-lg-10">
+    <div class="col-lg-10"><!-- Why Trust Us Section -->
+  <div class="mb-5">
+    <h3 class="fw-bold"><i class="fas fa-shield-alt text-primary me-2"></i> Why You Can Trust PyroniqTech</h3>
+    <ul class="list-unstyled mt-3">
+      <li><i class="fas fa-check-circle text-success me-2"></i> 99.9% Uptime Guarantee</li>
+      <li><i class="fas fa-check-circle text-success me-2"></i> Data is never shared or sold</li>
+      <li><i class="fas fa-check-circle text-success me-2"></i> 24/7 Human-Level Automation</li>
+      <li><i class="fas fa-check-circle text-success me-2"></i> End-to-End Encrypted Systems</li>
+    </ul>
+  </div>
 
-      <!-- Trust Commitments, Security, Privacy, Uptime... (unchanged blocks) -->
+  <!-- Feedback Confirmation -->
+  {% if feedback_submitted %}
+  <div class="alert alert-success">
+    <i class="fas fa-check-circle me-1"></i> Thank you for your valuable feedback!
+  </div>
+  {% endif %}
 
-      <!-- Feedback Form -->
-      <div class="card shadow-sm border-0 rounded-4 mt-5" data-aos="fade-up" data-aos-delay="400">
-        <div class="card-body p-4">
-          <h4 class="fw-semibold mb-3"><i class="fas fa-comments me-2 text-primary"></i> Your Feedback Matters</h4>
-          <p class="text-muted">Tell us how we’re doing — feedback helps us improve.</p>
+  <!-- Feedback Form -->
+  <div class="card shadow-sm border-0 rounded-4 mt-4" data-aos="fade-up" data-aos-delay="300">
+    <div class="card-body p-4">
+      <h4 class="fw-semibold mb-3"><i class="fas fa-comments me-2 text-primary"></i> Your Feedback Matters</h4>
+      <p class="text-muted">Tell us how we’re doing — feedback helps us improve.</p>
 
-          <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="row mb-3">
-              <div class="col-md-6">
-                <label class="form-label fw-semibold">Your Name</label>
-                <input type="text" name="feedback_name" class="form-control form-control-lg" required>
-              </div>
-              <div class="col-md-6">
-                <label class="form-label fw-semibold">Your Email</label>
-                <input type="email" name="feedback_email" class="form-control form-control-lg" required>
-              </div>
-            </div>
-            <div class="mb-3">
-              <label class="form-label fw-semibold">Your Message</label>
-              <textarea name="feedback_message" rows="5" class="form-control form-control-lg" required></textarea>
-            </div>
-            <div class="mb-3">
-              <label class="form-label fw-semibold">Attachment (optional)</label>
-              <input type="file" name="feedback_attachment" class="form-control form-control-lg">
-            </div>
-            <div class="d-grid">
-              <button type="submit" class="btn btn-primary btn-lg">
-                <i class="fas fa-paper-plane me-1"></i> Submit Feedback
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-
-      <!-- Rating Section -->
-      <div class="card shadow-sm border-0 rounded-4 mt-4" data-aos="zoom-in" data-aos-delay="500">
-        <div class="card-body p-4 text-center">
-          <h4 class="fw-semibold mb-3">
-            <i class="fas fa-star-half-alt me-2 text-primary"></i> Rate Your Experience
-          </h4>
-          <p class="text-muted mb-3">How would you rate your experience with PyroniqTech so far?</p>
-
-          <!-- Stars -->
-          <div id="rating-stars" class="fs-4 mb-2">
-            {% for i in "12345" %}
-              <i class="fas fa-star star-icon text-muted" data-value="{{ forloop.counter }}"></i>
-            {% endfor %}
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label class="form-label fw-semibold">Your Name</label>
+            <input type="text" name="feedback_name" class="form-control form-control-lg" required>
           </div>
-
-          {% if average_rating %}
-          <div class="small text-muted">
-            Average rating: <span id="rating-count">{{ average_rating|floatformat:1 }}</span> / 5
+          <div class="col-md-6">
+            <label class="form-label fw-semibold">Your Email</label>
+            <input type="email" name="feedback_email" class="form-control form-control-lg" required>
           </div>
-          {% endif %}
-
-          <div id="rating-response" class="fw-semibold mt-2" style="display:none;"></div>
         </div>
-      </div>
-
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Your Message</label>
+          <textarea name="feedback_message" rows="5" class="form-control form-control-lg" required></textarea>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Attachment (optional)</label>
+          <input type="file" name="feedback_attachment" class="form-control form-control-lg">
+        </div>
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary btn-lg">
+            <i class="fas fa-paper-plane me-1"></i> Submit Feedback
+          </button>
+        </div>
+      </form>
     </div>
   </div>
+
+  <!-- Rating Section -->
+  <div class="card shadow-sm border-0 rounded-4 mt-4" data-aos="zoom-in" data-aos-delay="500">
+    <div class="card-body p-4 text-center">
+      <h4 class="fw-semibold mb-3">
+        <i class="fas fa-star-half-alt me-2 text-primary"></i> Rate Your Experience
+      </h4>
+      <p class="text-muted mb-3">How would you rate your experience with PyroniqTech so far?</p>
+
+      <!-- Stars -->
+      <div id="rating-stars" class="fs-4 mb-2">
+        {% for i in "12345" %}
+          <i class="fas fa-star star-icon text-muted" data-value="{{ forloop.counter }}"></i>
+        {% endfor %}
+      </div>
+
+      {% if average_rating %}
+      <div class="small text-muted">
+        Average rating: <span id="rating-count">{{ average_rating|floatformat:1 }}</span> / 5
+      </div>
+      {% endif %}
+
+      {% if total_ratings %}
+      <div class="small text-muted">Total ratings: {{ total_ratings }}</div>
+      {% endif %}
+
+      <div id="rating-response" class="alert mt-3 d-none"></div>
+    </div>
+  </div>
+
+  <!-- Testimonials -->
+  <div class="card mt-5 shadow-sm border-0 rounded-4 p-4" data-aos="fade-up" data-aos-delay="600">
+    <h4 class="fw-semibold mb-4"><i class="fas fa-quote-left text-primary me-2"></i> What Our Users Say</h4>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <blockquote class="blockquote">
+          <p>“PyroniqTech is the most responsive dev team I’ve worked with. Loved the support!”</p>
+          <footer class="blockquote-footer">Hassan R., <cite title="Source Title">Pakistan</cite></footer>
+        </blockquote>
+      </div>
+      <div class="col-md-6 mb-3">
+        <blockquote class="blockquote">
+          <p>“Their automation tools saved me hours daily — 10/10!”</p>
+          <footer class="blockquote-footer">Sarah T., <cite title="Source Title">UAE</cite></footer>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+
+  <!-- Trust Badges -->
+  <div class="text-center mt-5">
+    <img src="{% static 'img/ssl-secure.png' %}" alt="SSL Secured" class="mx-2" style="height: 50px;">
+    <img src="{% static 'img/verified-user.png' %}" alt="Verified Service" class="mx-2" style="height: 50px;">
+    <img src="{% static 'img/trusted-brand.png' %}" alt="Trusted Brand" class="mx-2" style="height: 50px;">
+  </div>
+
 </div>
 
-<!-- Star rating logic + animation -->
-<script>
+  </div>
+</div><!-- Star rating logic --><script>
 document.addEventListener('DOMContentLoaded', function () {
   const stars = document.querySelectorAll('.star-icon');
   const response = document.getElementById('rating-response');
@@ -96,6 +138,24 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   stars.forEach(star => {
+    star.addEventListener('mouseover', function () {
+      if (submitted) return;
+      const hoverValue = this.getAttribute('data-value');
+      stars.forEach(s => {
+        const val = s.getAttribute('data-value');
+        s.classList.toggle('text-warning', val <= hoverValue);
+        s.classList.toggle('text-muted', val > hoverValue);
+      });
+    });
+
+    star.addEventListener('mouseout', function () {
+      if (submitted) return;
+      stars.forEach(s => {
+        s.classList.remove('text-warning');
+        s.classList.add('text-muted');
+      });
+    });
+
     star.addEventListener('click', function () {
       if (submitted) return;
       const rating = this.getAttribute('data-value');
@@ -103,16 +163,17 @@ document.addEventListener('DOMContentLoaded', function () {
       fetch("{% url 'submit_rating' %}", {
         method: 'POST',
         headers: {
-          'X-CSRFToken': '{{ csrf_token }}',
+          'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
           'Content-Type': 'application/x-www-form-urlencoded'
         },
         body: 'stars=' + rating
       })
       .then(res => res.json())
       .then(data => {
+        response.classList.remove('d-none');
         if (data.success) {
           response.textContent = 'Thank you for your rating!';
-          response.className = 'text-success fw-semibold mt-2';
+          response.className = 'alert alert-success mt-3';
           stars.forEach(s => {
             const value = s.getAttribute('data-value');
             s.classList.toggle('text-warning', value <= rating);
@@ -121,12 +182,11 @@ document.addEventListener('DOMContentLoaded', function () {
           submitted = true;
         } else {
           response.textContent = 'You already rated. Thank you!';
-          response.className = 'text-danger fw-semibold mt-2';
+          response.className = 'alert alert-warning mt-3';
         }
-        response.style.display = 'block';
       });
     });
   });
 });
-</script>
-{% endblock %}
+</script>{% endblock %}
+
