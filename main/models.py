@@ -1,5 +1,4 @@
 from django.db import models
-import random
 import string
 
 # Optional: Auto-generate a unique ticket ID
