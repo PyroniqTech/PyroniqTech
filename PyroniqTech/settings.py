@@ -36,6 +36,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'PyroniqTech.urls'
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 TEMPLATES = [
     {
