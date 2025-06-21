@@ -38,3 +38,9 @@ class TicketReply(models.Model):
 
     def __str__(self):
         return f"Reply to {self.ticket.ticket_id}"
+
+
+class TrustRating(models.Model):
+    stars = models.IntegerField()
+    submitted_at = models.DateTimeField(auto_now_add=True)
+    ip_address = models.GenericIPAddressField(null=True, blank=True)
