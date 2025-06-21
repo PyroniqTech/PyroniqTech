@@ -3,7 +3,7 @@ from django.shortcuts import render
 import os
 
 # 👤 Replace this with your actual public IP address
-ALLOWED_DEV_IP = '154.198.117.181'
+ALLOWED_DEV_IP = '119.155.167.171'
 
 class UnderDevelopmentMiddleware:
     def __init__(self, get_response):
