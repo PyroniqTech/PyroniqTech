@@ -161,6 +161,7 @@ Message:
             if file:
                 msg.attach(file.name, file.read(), file.content_type)
             msg.send()
+            print("📤 Email sent"),
 
             # Auto-reply to visitor
             html_content = f"""
@@ -187,6 +188,7 @@ Message:
 
             messages.success(request, "Your inquiry has been sent successfully.")
         except Exception as e:
+            print("🔵 POST received"), 
             print(f"Error sending email: {e}")
             messages.error(request, "Failed to send email. Please try again later.")
 
