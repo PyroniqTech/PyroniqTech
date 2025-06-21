@@ -10,4 +10,5 @@ urlpatterns = [
     path('career/', views.career, name='career'),
     path('payment/', views.payment, name='payment'),
     path("robots.txt", views.robots_txt, name="robots_txt"),
+    path('submit-rating/', views.submit_rating, name='submit_rating'),
 ]
